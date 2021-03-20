@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   # homes_controller
   root :to  => "homes#top"
+  get "homes/about" => "homes#about"
   
   # books_controller
   resources :books
