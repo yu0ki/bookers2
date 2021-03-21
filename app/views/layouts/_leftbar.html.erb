@@ -1,0 +1,44 @@
+<div class="col-3">
+            <h2>User Info</h2>
+            <table class="table">
+                <tr>
+                    <th><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback:"no_image.jpg" %></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>name</th>
+                    <th><%= current_user.name %></th>
+                </tr>
+                <tr><th>introduction</th>
+                    <th><%= current_user.introduction %>hello my name is uyu0ki nice to meet you</th>
+                </tr>
+            </table>
+             <div class="row"><button type="button" class="btn btn-outline-secondary btn-block"><i class="fas fa-user-cog"></i></button></div>
+             
+             <div class="row">
+                 <h2 class="mt-3">New Book</h2>
+                 
+                 <%= form_with model: @book, url: books_path, local:true do |f| %>
+            
+                    <div class="field pb-3">
+                      <%= f.label :title %><br />
+                      <%= f.text_field :title, autofocus: true, autocomplete: "book title" %>
+                    </div>
+                  
+                    <div class="field pb-3">
+                      <%= f.label :body %><br />
+                      <%= f.text_area :body, autofocus: true,  autocomplete: "your opinion about the book" %>
+                    </div>
+                    
+                    <div class="actions pb-3">
+                        
+                            <%= f.submit "Create Book", class: "btn btn-info" %>
+                        
+                    </div>
+          
+                 <% end %>
+             </div>
+             
+             
+        </div>
+        

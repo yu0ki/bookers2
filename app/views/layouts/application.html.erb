@@ -33,9 +33,9 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                   <% if user_signed_in? %>
-                    <li class="nav-item"><%= link_to root_path, class: "text-white font-weight-bold nav-link" do %><i class="fas fa-home"></i> Home<% end %></li>
+                    <li class="nav-item"><%= link_to user_path(current_user), class: "text-white font-weight-bold nav-link" do %><i class="fas fa-home"></i> Home<% end %></li>
                     <li class="nav-item"><%= link_to users_path, class: "text-white font-weight-bold nav-link" do %><i class="fas fa-users"></i> Users<% end %></li>
-                    <li class="nav-item"><%= link_to books_path, class: "text-white font-weight-bold nav-link" do %><i class="fas fa-books"></i> Books<% end %></li>
+                    <li class="nav-item"><%= link_to books_path, class: "text-white font-weight-bold nav-link" do %><i class="fas fa-book-open"></i> Books<% end %></li>
                     <li class="nav-item"><%= link_to destroy_user_session_path, method: :delete, class: "text-white font-weight-bold nav-link" do %><i class="fas fa-sign-out-alt"></i> Logout<% end %></li>
                     
                   <% else %>
