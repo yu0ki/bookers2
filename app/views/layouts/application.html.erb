@@ -64,6 +64,14 @@
     
     
     <main>
+      <!--サクセス・エラーメッセージ-->
+      
+      <% if notice %>
+　　    <p class="notice px-5 text-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert px-5 text-danger"><%= alert %></p>
+      <% end %>
       <!--各ページ固有の内容-->
       <%= yield %>
     </main>
