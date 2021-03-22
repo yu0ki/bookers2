@@ -13,7 +13,11 @@
                     <th><%= user.introduction %></th>
                 </tr>
             </table>
-             <div class="row"><button type="button" class="btn btn-outline-secondary btn-block"><i class="fas fa-user-cog"></i></button></div>
+            <div class="row">
+                <%= link_to edit_user_path(user) do %>
+                     <button type="button" class="btn btn-outline-secondary btn-block"><i class="fas fa-user-cog"></i></button>
+                <% end %>
+            </div>
              
              <div class="row">
                  <h2 class="mt-3">New Book</h2>
@@ -22,12 +26,12 @@
             
                     <div class="field pb-3">
                       <%= f.label :title %><br />
-                      <%= f.text_field :title, autofocus: true, autocomplete: "book title" %>
+                      <%= f.text_field :title, autocomplete: "book title" %>
                     </div>
                   
                     <div class="field pb-3">
                       <%= f.label :body, "Opinion" %><br />
-                      <%= f.text_area :body, autofocus: true,  autocomplete: "your opinion about the book" %>
+                      <%= f.text_area :body, autocomplete: "your opinion about the book" %>
                     </div>
                     
                     <div class="actions pb-3">
