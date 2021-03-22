@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 mx-auto">
+            <h1>Editing Book</h1>
+            
+            <%= form_with model: @book, url: book_path, local:true do |f| %>
+                <div class="field pb-3">
+                    <%= f.label :title %><br />
+                    <%= f.text_field :title, autofocus: true, autocomplete: "book title" %>
+                </div>
+                
+                <div class="field pb-3">
+                    <%= f.label :body %><br />
+                    <%= f.text_area :body, autofocus: true, autocomplete: "your opinion anout the book" %>
+                </div>
+                
+                <div class="actions pb-3">
+                    <%= f.submit "Update Book", class: "btn btn-info" %>
+                </div>
+            <% end %>
+            
+            <p><%= link_to "Show", book_path(@book) %> | <%= link_to "Back", books_path %></p>
+        </div>
+    </div>
+    
+</div>
