@@ -7,7 +7,6 @@ class BooksController < ApplicationController
     
     
     def create
-        p params
         
         book = Book.new(book_params)
         book.user_id = current_user.id
