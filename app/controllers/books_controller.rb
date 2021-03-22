@@ -11,10 +11,39 @@ class BooksController < ApplicationController
         book = Book.new(book_params)
         book.user_id = current_user.id
         if book.save
+            notice[:flash] = "You have created book successfully."
             redirect_to book_path(book)
         else
            render "/books/index" 
         end
+    end
+    
+    def show
+        @book = Book.find(params[:id])    
+        @new_book = Book.new
+    end
+    
+    def edit
+        @book = Book.find(params[:id])
+    end
+    
+    def update
+        book = Book.find(params[:id])
+        if book.update(book_params)
+            redirect_to book_path(book)
+        else
+            render(book_path)
+        end
+    end
+    
+    def destroy
+        book = Book.find(params[:id])
+        if book.destroy
+            redirect_to books_path
+        else
+            render("/books/show/:id")
+        end
+            
     end
     
     

@@ -18,7 +18,7 @@
              <div class="row">
                  <h2 class="mt-3">New Book</h2>
                  
-                 <%= form_with model: @book, url: books_path, local:true do |f| %>
+                 <%= form_with model: book, url: books_path, local:true do |f| %>
             
                     <div class="field pb-3">
                       <%= f.label :title %><br />
