@@ -23,6 +23,7 @@
                 
                 <tbody>
                      <% @books.each do |book| %>
+                     
                         <tr>
                             <td>
                                 <%= link_to user_path(book.user) do %>
@@ -37,12 +38,14 @@
                             <td><%= book.body %></td>
                         </tr>
                     <% end %>
+                    
                 </tbody>
                 
                
                 
                 
             </table>
+            <%= paginate @books %>
             
             
             

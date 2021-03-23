@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
     def index
-        @books = Book.all
+        @books = Book.page(params[:page]).reverse_order
         @book = Book.new
     end
     
@@ -15,7 +15,7 @@ class BooksController < ApplicationController
             redirect_to book_path(book)
         else
             @book = book
-            @books = Book.all
+            @books = Book.page(params[:page]).reverse_order
            render "/books/index" 
         end
     end

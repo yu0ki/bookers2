@@ -18,6 +18,7 @@
                 </tr>
                 
                 <% @user.books.each do |book| %>
+                
                     <tr>
                         <td>
                             <%= link_to user_path(book.user) do %>
@@ -34,7 +35,10 @@
                     </tr>
                 <% end %>
                 
+                
             </table>
+            
+            <%= paginate @user.books.page(params[:page]).reverse_order %>
             
         </div>
     </div>

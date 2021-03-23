@@ -15,6 +15,7 @@
                 </tr>
                 
                 <% @users.each do |user| %>
+                
                     <tr>
                         <td><%= attachment_image_tag user, :profile_image, size:"40x40", fallback: "no_image.jpg", size:"40x40" %></td>
                         <td><%= user.name %></td>
@@ -22,7 +23,9 @@
                     </tr>
                 <% end %>
                 
+                
             </table>
+            <%= paginate @users %>
             
         </div>
     </div>
