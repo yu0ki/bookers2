@@ -1,4 +1,7 @@
 <div class="container">
+    <!--validationによるエラーメッセージ-->
+    <%= render "/layouts/error", model: @book %>
+    
     <div class="row">
         <%= render "/layouts/leftbar", user: @user ,book: @book %>
         

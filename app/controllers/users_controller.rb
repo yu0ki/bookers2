@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     def index
         @users = User.all
-    
         @user = current_user
         @book = Book.new
     end
@@ -21,6 +20,7 @@ class UsersController < ApplicationController
             flash[:notice] = "You have updated user successfully."
             redirect_to user_path(user)
         else
+            @user = user
             render :edit
         end
     end

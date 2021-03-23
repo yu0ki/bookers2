@@ -14,6 +14,8 @@ class BooksController < ApplicationController
             flash[:notice] = "You have created book successfully."
             redirect_to book_path(book)
         else
+            @book = book
+            @books = Book.all
            render "/books/index" 
         end
     end
@@ -33,7 +35,8 @@ class BooksController < ApplicationController
             flash[:notice] = "You have updated book successfully."
             redirect_to book_path(book)
         else
-            render(book_path)
+            @book = book
+            render("/books/edit.html.erb")
         end
     end
     
