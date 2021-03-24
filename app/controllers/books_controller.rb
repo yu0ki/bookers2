@@ -33,7 +33,7 @@ class BooksController < ApplicationController
             flash[:alert] = "You can't edit books posted by other users."
             @books = Book.page(params[:page]).reverse_order
             @book = Book.new
-            render("books/index")
+            redirect_to books_path
         end
     end
     

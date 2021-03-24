@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             @users = User.page(params[:page]).reverse_order
             @user = current_user
             @book = Book.new
-            render("users/index")
+            redirect_to user_path(current_user)
         end
     end
     
