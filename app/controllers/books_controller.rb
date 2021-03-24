@@ -27,6 +27,14 @@ class BooksController < ApplicationController
     
     def edit
         @book = Book.find(params[:id])
+        
+        # ほかのユーザーによる無断編集を阻止
+        if @book.user != current_user
+            flash[:alert] = "You can't edit books posted by other users."
+            @books = Book.page(params[:page]).reverse_order
+            @book = Book.new
+            render("books/index")
+        end
     end
     
     def update

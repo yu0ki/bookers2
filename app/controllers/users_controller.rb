@@ -12,6 +12,13 @@ class UsersController < ApplicationController
     
     def edit
         @user = User.find(params[:id])
+        if @user != current_user
+            flash[:alert] = "You can't edit other users' infomation."
+            @users = User.page(params[:page]).reverse_order
+            @user = current_user
+            @book = Book.new
+            render("users/index")
+        end
     end
     
     def update
