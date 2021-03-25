@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'favorites/create'
+  get 'favorites/destroy'
   # users_controller
   devise_for :users
   resources :users
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
   get "home/about" => "homes#about"
   
   # books_controller
-  resources :books
+  resources :books do
+    resources :favorites, only: [:create, :destroy]
+  end
   
  
   
