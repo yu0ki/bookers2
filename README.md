@@ -1,24 +1,50 @@
-# README
+# Bookers2について
+このウェブアプリケーションは、前作のBooksersにユーザー認証機能を付け加えたものである。
+ユーザー認証機能には、meshiteroのときと同じくdeviseを用いている。
+ユーザーがログインしていない場合とログインしている場合で、アプリケーションの挙動が異なる。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## ログインしていない場合
+ユーザーはトップページとaboutページのみ閲覧できる。
+トップページからログイン及びサインイン用のページへジャンプできる。
+その他のページに（URLを打ち込むなどして）アクセスしようとしても、ログイン画面に飛ばされる。
 
-Things you may want to cover:
+## ログインしている場合
+ユーザーはトップページとaboutページ以外にも、本の感想投稿一覧ページや、ユーザー一覧ページ、
+また投稿やユーザーの詳細情報ページを閲覧できる。
 
-* Ruby version
+さらに、本の感想を新規投稿・編集・削除したり、ユーザープロフィールの編集を行ったりもできる。
+ただし、編集・削除できるのは現在ログインしているユーザーが投稿した内容と、そのユーザーのプロフィールに限る。
+他人の投稿やプロフィールを勝手に編集しようとしても、編集ページに飛ぶことはできない。
 
-* System dependencies
+# 主要なファイルの説明
+このアプリケーションの作成中に編集した主なファイルを、簡単に説明する。
 
-* Configuration
+## Model
 
-* Database creation
+### Userモデル
+ユーザーの情報を保存するモデル。
+ユーザー名、メールアドレス、パスワードなどを主に保存している。
+deviseでは、ログイン認証にはemailを用いるが、
+本アプリではログイン時にはユーザー名を使用するため、config/initializer/devise.rbにて編集している。
 
-* Database initialization
+### Bookモデル
+本の感想を管理するモデル。title, bodyの2種のカラムが存在する。それぞれ本のタイトルとその感想である。
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Controller
+### application_controller
+主にdeviseに関するメソッドを定義している。
+非ログインユーザーのアクセス制限や、ログイン後の遷移先などが書かれている。
 
-* Deployment instructions
+### books_contorller
+本の感想の投稿について、投稿一覧表示・新規作成・詳細ページ表示・編集ページ表示・編集内容保存・削除に関するメソッドを定義している。
+newメソッド（新規投稿画面表示）がないのは、indexのサイドバーにて新規作成画面を表示するからである。
+newで書くべき内容はindexに書かれている。
 
-* ...
+### homes_controller
+topページとaboutページの表示に関するメソッドを定義している。
+この2つのページからはモデルを扱わないので、メソッド内は空である。
+
+### users_controller
+ユーザー情報に関するメソッド。books_controllerと同じような内容である。
+
