@@ -14,9 +14,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>     </th>
+                        <th></th>
                         <th>Title</th>
                         <th>Opinion</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                         
                 </thead>
@@ -36,6 +38,8 @@
                                 <% end %>
                             </td>
                             <td><%= book.body %></td>
+                            
+                            <!--いいね-->
                             <td>
                                 <% if book.favorited_by?(current_user) %>
                                     <p>
@@ -53,6 +57,12 @@
                                     </p>
                                 <% end %>
                             </td>
+                            
+                            <!--コメント数-->
+                            <td>
+                                <p>コメント数： <%= book.book_comments.count %>件</p>
+                            </td>
+                            
                         </tr>
                     <% end %>
                     
