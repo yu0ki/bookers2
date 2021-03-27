@@ -89,7 +89,7 @@
                             
                             <% if book_comment.user_id == current_user.id %>
                                 <td>
-                                    <%= link_to book_path(@book), method: :delete, "data-confirm" => "Do you really want to delete this comment?" do %>
+                                    <%= link_to book_book_comment_path(@book), method: :delete, "data-confirm" => "Do you really want to delete this comment?" do %>
                                         <button type="button" class="btn btn-danger">Destroy</button>
                                     <% end %>
                                 </td>
@@ -101,6 +101,7 @@
                     
                 </tbody>
             </table>
+            <%= paginate @book_comments %>
             
             <!--validationによるエラーメッセージ-->
             <%= render "/layouts/error", model: @book_comment %>
