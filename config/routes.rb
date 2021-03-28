@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   
-  get 'book_comments/create'
-  get 'book_comments/destroy'
-  get 'favorites/create'
-  get 'favorites/destroy'
+  # get 'book_comments/create'
+  # get 'book_comments/destroy'
+  # get 'favorites/create'
+  # get 'favorites/destroy'
+  
+  
   # users_controller
   devise_for :users
   resources :users

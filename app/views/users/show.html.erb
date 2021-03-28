@@ -15,6 +15,8 @@
                     <th>     </th>
                    <th>Title</th>
                    <th>Opinion</th>
+                   <th></th>
+                   <th></th>
                 </tr>
                 
                 <% @user.books.each do |book| %>
@@ -42,12 +44,17 @@
                                 </p>
                             <% else %>
                                 <p class="text-primary">
-                                    <%= link_to book_favorites_path(book.id), method: :create do %>
+                                    <%= link_to book_favorites_path(book.id), method: :post do %>
                                         <i class="fas fa-heart"></i>
                                         <%= book.favorites.count %>
                                     <% end %>
                                 </p>
                             <% end %>
+                        </td>
+                        
+                        <!--コメント数-->
+                        <td>
+                            <p>コメント数： <%= book.book_comments.count %>件</p>
                         </td>
                     </tr>
                 <% end %>
