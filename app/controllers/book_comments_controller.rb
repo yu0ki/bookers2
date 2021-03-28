@@ -18,7 +18,8 @@ class BookCommentsController < ApplicationController
 
   def destroy
     book = Book.find(params[:book_id])
-    book_comment = BookComment.find_by(book_id: book.id)
+    book_comment = book.book_comments.find(params[:id])
+    
     if book_comment.destroy
       flash[:notice] = "You have deleted comment successfully."
       redirect_to request.referer
